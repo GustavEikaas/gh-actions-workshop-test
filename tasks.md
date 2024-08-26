@@ -60,6 +60,7 @@ To make the action mandatory you need to add a branch protection rule.
 10. Click create
 
 Now you can make a pull request to check if its working
+The `merge` button on the pull request will be greyed out until the action completes
 </details>
 
 ## Task 3
