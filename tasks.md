@@ -1,10 +1,12 @@
+
 # Tasks
 
 ## Task 1
 
 - Clone template repo
+- Make a new branch
 - Make a github action that builds a pull request
-- Make a PR to test the action
+- Push the changes and create a pull request
 
 <details>
     <summary>Hint</summary>
@@ -15,7 +17,7 @@ In this project your need to run `npm install` and `npm run build` to build the 
 The below code needs to be added to the file in .github/workflows/ci.yml
 
 ```yaml
-name: CI
+name: CI # Name of the workflow
 
 on:
   pull_request: #Runs when pull request is created or updated
@@ -40,13 +42,24 @@ jobs:
 
 ## Task 2
 
+- Merge your the pull request from task 1
 - Make the action from task 1 mandatory as a branch protection rule
 
 <details>
     <summary>Hint</summary>
 To make the action mandatory you need to add a branch protection rule.
-You can do this by going to the settings of the repo and then to branches.
-Here you can add a rule that requires the action to pass before merging.
+1. Go to github settings in the web browser
+2. Navigate to rules and then rulesets
+3. Click new branch ruleset
+4. Give it a name (I usually call it main)
+5. Set enforcement status to active
+6. Click add target and select include default branch (main)
+7. Scroll down and check `Require status checks to pass`
+8. Click add checks
+9. Write the name of the job in your ci.yml workflow (Build)
+10. Click create
+
+Now you can make a pull request to check if its working
 </details>
 
 ## Task 3
@@ -168,4 +181,5 @@ You are a pro, no more hints for you.
     <summary>Hint</summary>
 Really dude?
 </details>
+
 
