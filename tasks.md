@@ -72,7 +72,14 @@ The `merge` button on the pull request will be greyed out until the action compl
 
 To add a badge to the readme you need to add a markdown snippet.
 The snippet should look something like this:
+1. Remove the `\`
+2. Change github username to your username
+3. Change repo name to your repo name
+4. Add workflow name (ci.yml)
 \![GitHub Workflow Status (with event)](https://img.shields.io/github/actions/workflow/status/<Github username>/<repo name>/<Workflow name>?label=Build)
+
+
+The badge will probably say build failed but that is because the badge is for the main branch where the action has failed
 </details>
 
 ## Task 4 
