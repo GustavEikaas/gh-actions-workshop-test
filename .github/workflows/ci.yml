@@ -5,8 +5,11 @@ on:
 
 jobs:
   build:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest]
     name: Build
-    runs-on: ubuntu-latest
+    runs-on: ${{matrix.os}}
 
     steps:
       - name: Checkout code

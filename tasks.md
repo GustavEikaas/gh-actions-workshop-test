@@ -92,9 +92,28 @@ The badge will probably say build failed but that is because the badge is for th
 To run the action on both Windows and Ubuntu you need to add a matrix to the action.
 The matrix should look something like this:
 ```yaml
-strategy:
-  matrix:
-    os: [ubuntu-latest, windows-latest]
+name: CI
+
+on:
+  pull_request:
+
+jobs:
+  build:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    name: Build
+    runs-on: ${{matrix.os}}
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Build
+        shell: bash
+        run: |
+          npm install
+          npm run build
 ```
 You can then use the `matrix.os` variable to run different commands based on the OS.
 </details>
