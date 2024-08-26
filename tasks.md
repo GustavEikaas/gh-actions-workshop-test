@@ -1,0 +1,153 @@
+# Tasks
+
+## Task 1
+
+- Clone template repo
+- Make a github action that builds a pull request
+- Make a PR to test the action
+
+<details>
+    <summary>Hint</summary>
+Gh action support multiple triggers, one of them is `pull_request` which is triggered when a PR is created or updated.
+When running a gh action usually you want to checkout the code, as this is not done by default you need to add a step to do this.
+In this project your need to run `npm install` and `npm run build` to build the project.
+
+```yaml
+      steps:
+
+        - name: Checkout code
+          uses: actions/checkout@v2
+```
+</details>
+
+## Task 2
+
+- Make the action from task 1 mandatory as a branch protection rule
+
+<details>
+    <summary>Hint</summary>
+To make the action mandatory you need to add a branch protection rule.
+You can do this by going to the settings of the repo and then to branches.
+Here you can add a rule that requires the action to pass before merging.
+</details>
+
+## Task 3
+
+- Add a badge from [shields](https://shields.io) to the readme.md
+
+<details>
+    <summary>Hint</summary>
+
+To add a badge to the readme you need to add a markdown snippet.
+The snippet should look something like this:
+\![GitHub Workflow Status (with event)](https://img.shields.io/github/actions/workflow/status/<Github username>/<repo name>/<Workflow name>?label=Build)
+</details>
+
+## Task 4 
+
+- Make the CI build action run on both Windows and Ubuntu runners before passing.
+
+<details>
+    <summary>Hint</summary>
+
+To run the action on both Windows and Ubuntu you need to add a matrix to the action.
+The matrix should look something like this:
+```yaml
+strategy:
+  matrix:
+    os: [ubuntu-latest, windows-latest]
+```
+You can then use the `matrix.os` variable to run different commands based on the OS.
+</details>
+
+
+## Task 5 
+
+- Deploy the application as a github page
+
+<details>
+    <summary>Hint</summary>
+
+Look at the gh-page-deploy.yml file in the .github/workflows folder
+This file is a template for deploying a static site to github pages.
+You need to change the `run` step to build your project and then deploy it to the gh-pages branch.
+
+```yaml
+      - name: Deploy
+        run: |
+          npm install
+          npm run build
+```
+</details>
+
+## Task 6 
+
+- Update the gh-page-deploy.yml file to be triggered by workflow_dispatch
+- Trigger the deployment
+
+<details>
+    <summary>Hint</summary>
+    ```yaml
+    on:
+        workflow_dispatch:
+    ```
+</details>
+
+## Task 7 
+
+- use the github event object to get the commit id and add it node env with the name of VITE_commitId
+- Redeploy the application and check the page for the commit id
+
+<details>
+    <summary>Hint</summary>
+
+Look at the gh-page-deploy.yml file in the .github/workflows folder
+This file is a template for deploying a static site to github pages.
+You need to change the `run` step to build your project and then deploy it to the gh-pages branch.
+
+```yaml
+      - name: Deploy
+        run: |
+          npm install
+          npm run build
+          echo "VITE_commitId=${{github.sha}}" >> .env
+```
+</details>
+
+
+## Task 8
+
+- Update the gh-page-deploy.yml file to create a github issue with the title "Deployed commit id: <commit id>" 
+
+<details>
+    <summary>Hint</summary>
+You are a pro, no more hints for you.
+</details>
+
+## Task 9 
+
+- Create a github action that runs on a schedule and closes all issues with the label "fixed"
+
+<details>
+    <summary>Hint</summary>
+You are a pro, no more hints for you.
+</details>
+
+## Task 10 
+
+- Create a github action that runs on a schedule and updates all npm packages then creates a PR with the changes
+
+<details>
+    <summary>Hint</summary>
+You are a pro, no more hints for you.
+</details>
+
+## Task 11
+
+- Help others who are stuck
+
+<details>
+    <summary>Hint</summary>
+Really dude?
+</details>
+
