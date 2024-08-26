@@ -12,11 +12,29 @@ Gh action support multiple triggers, one of them is `pull_request` which is trig
 When running a gh action usually you want to checkout the code, as this is not done by default you need to add a step to do this.
 In this project your need to run `npm install` and `npm run build` to build the project.
 
-```yaml
-      steps:
+The below code needs to be added to the file in .github/workflows/ci.yml
 
-        - name: Checkout code
-          uses: actions/checkout@v2
+```yaml
+name: CI
+
+on:
+  pull_request: #Runs when pull request is created or updated
+
+jobs:
+  build:
+    name: Build # Name of your job
+    runs-on: ubuntu-latest # What OS to run on, usually windows-latest or ubuntu-latest
+
+    steps:
+      - name: Checkout code #When the github action starts its an empty container, so to interact with your codebase you need to checkout the repo first
+        uses: actions/checkout@v2
+
+      - name: Build # This step will install npm dependencies and build the project
+        shell: bash
+        run: |
+          npm install
+          npm run build
+
 ```
 </details>
 
