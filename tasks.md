@@ -65,6 +65,7 @@ The `merge` button on the pull request will be greyed out until the action compl
 
 ## Task 3
 
+- Merge the pr from task 2
 - Add a badge from [shields](https://shields.io) to the readme.md
 
 <details>
@@ -84,13 +85,15 @@ The badge will probably say build failed but that is because the badge is for th
 
 ## Task 4 
 
+- Merge PR from task 3
+- Make a new branch
 - Make the CI build action run on both Windows and Ubuntu runners before passing.
 
 <details>
     <summary>Hint</summary>
 
 To run the action on both Windows and Ubuntu you need to add a matrix to the action.
-The matrix should look something like this:
+The matrix configuration should look something like this:
 ```yaml
 name: CI
 
@@ -116,6 +119,8 @@ jobs:
           npm run build
 ```
 You can then use the `matrix.os` variable to run different commands based on the OS.
+
+If everything is working you should see two CI / Build runs on your pull request
 </details>
 
 
